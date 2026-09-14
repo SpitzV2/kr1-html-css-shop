@@ -138,6 +138,37 @@ footer {
 }
 
 /*
+  Пока это обычная ссылка, но визуально она оформляется как кнопка.
+*/
+.button {
+    display: inline-block;
+    padding: 10px 16px;
+    color: #ffffff;
+    background-color: #0057b8;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+/*
+  Простое состояние наведения для кнопки.
+*/
+.button:hover {
+    background-color: #003f86;
+}
+
+/*
+  Дополнительный информационный блок.
+*/
+.aside-info {
+    max-width: 1100px;
+    margin: 0 auto 32px;
+    padding: 16px;
+    border-left: 4px solid #0057b8;
+    background-color: #f7f7f7;
+}
+
+
+/*
 body {
     margin: 0;
     font-family: Arial, sans-serif;
