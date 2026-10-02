@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обратная связь — CactusShop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="site-header__inner">
+        <a class="site-header__logo" href="index.html">CactusShop</a>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+                <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="feedback.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="breadcrumbs">
+        <a class="breadcrumbs__link" href="index.html">Главная</a>
+        <span class="breadcrumbs__current">Обратная связь</span>
+    </div>
+
+    <section class="section">
+        <h1>Обратная связь</h1>
+        <p>Если у вас возникли вопросы по уходу за суккулентами, предложения по сотрудничеству или вы хотите оформить индивидуальный заказ на флорариум — заполните форму ниже. Наш специалист свяжется с вами в ближайшее время!</p>
+
+        <!-- Контейнер для формы обратной связи -->
+        <div class="feedback-container">
+            <form class="order-form" id="page-feedback-form" action="#" method="post" novalidate>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="feedback-name">Имя</label>
+                    <input class="order-form__input" id="feedback-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" required>
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="feedback-email">E-mail</label>
+                    <input class="order-form__input" id="feedback-email" name="email" type="email" placeholder="example@mail.ru" required>
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="feedback-phone">Телефон</label>
+                    <input class="order-form__input" id="feedback-phone" name="phone" type="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+                    <small class="order-form__help-text">Формат: +7 (900) 000-00-00</small>
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="feedback-comment">Комментарий</label>
+                    <textarea class="order-form__input" id="feedback-comment" name="comment" rows="4" placeholder="Укажите дополнительную информацию"></textarea>
+                </div>
+
+                <div class="order-form__field order-form__field--checkbox">
+                    <label class="order-form__checkbox-label">
+                        <input class="order-form__checkbox" id="feedback-agreement" name="agreement" type="checkbox" required> Я согласен на обработку данных
+                    </label>
+                </div>
+
+                <div class="order-form__actions">
+                    <button class="button button--primary" type="submit">Отправить заявку</button>
+                </div>
+            </form>
+
+
+            <!-- Уведомление об успешной отправке (изначально скрыто) -->
+            <p class="success-message" id="feedback-success-message" hidden>Ваше сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+    <p>Магазин комнатных растений и суккулентов CactusShop</p>
+</footer>
+
+<a class="scroll-top-btn" href="#">↑</a>
+
+</body>
+</html>

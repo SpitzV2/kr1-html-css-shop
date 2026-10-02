@@ -3,17 +3,18 @@
    =============================== */
 :root {
   --color-bg: #ffffff;
-  --color-text: #222222;
+  --color-text: #000000;
   --color-muted: #666666;
-  --color-primary: #0057b8;
-  --color-primary-dark: #003f86;
-  --color-border: #dddddd;
-  --color-surface: #f7f7f7;
-  --color-surface-accent: #eef5ff;
-  --color-danger: #b00020;
-  --color-success: #168a2f;
-  --color-success-bg: #eefaf0;
+  --color-primary: #B8A26D;
+  --color-primary-dark: #B89034;
+  --color-border: #3D7854;
+  --color-surface: #F2F1EB;
+  --color-surface-accent: #3D7854;
+  --color-danger: #631B1E;
+  --color-success: #3D7854;
+  --color-success-bg: #232238;
   --color-white: #ffffff;
+  --color-shapka: #F0EBD5;
 
   --space-xs: 4px;
   --space-sm: 8px;
@@ -34,25 +35,43 @@
 * {
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+  height: 100%; /* Добавляем полную высоту для родительского элемента */
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.5;
   color: var(--color-text);
   background-color: var(--color-bg);
+
+  /* Включаем Flexbox на всю высоту экрана */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
-header,
-main,
-footer {
-  padding: var(--space-lg);
-}
-header {
+header{
   background-color: var(--color-surface);
+  flex-grow: 0;   /* Запрещаем шапке растягиваться */
+  flex-shrink: 0; /* Запрещает шапке сжиматься */
 }
-footer {
-  background-color: var(--color-surface);
+main {
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 
+footer {
+  background-color: var(--color-surface); /* Возвращаем мягкую плашку */
+  margin-top: auto; /* Дополнительная страховка для прижатия к низу */
+}
+footer {
+  padding: var(--space-lg);
+  background-color: var(--color-surface); /* Возвращаем мягкую плашку */
+  flex-shrink: 0; /* Запрещаем футеру менять размеры */
+  margin-top: auto; /* Дополнительная страховка для прижатия к низу */
+}
 /* ===============================
    3. Общие элементы интерфейса
    =============================== */
@@ -70,14 +89,17 @@ a:focus-visible {
 
 /* Шапка и навигация сайта по БЭМ и Flexbox (ПР №6 и №7) */
 .site-header {
-  background-color: transparent;
+  background-color: var(--color-shapka); /* Наш светло-серый тауп (#B8B4A0) */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);   /* Мягкая тень снизу для объема */
+  width: 100%;
 }
 .site-header__inner {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: var(--space-lg) var(--space-md);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   gap: var(--space-md);
 }
@@ -142,7 +164,8 @@ a:focus-visible {
 /* Сетка карточек товаров (CSS Grid из ПР №6) */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* Автоматически умещает карточки, делая максимум 2 в ряд */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-lg);
 }
 
@@ -195,6 +218,7 @@ a:focus-visible {
 }
 .button--primary:hover {
   background-color: var(--color-primary-dark);
+  color: var(--color-white) !important;
 }
 .button--secondary {
   color: var(--color-primary);
@@ -205,6 +229,20 @@ a:focus-visible {
   color: var(--color-white);
   background-color: var(--color-primary);
 }
+
+/* Перекрашиваем только кнопку «Закрыть» по её уникальному ID */
+#close-order-dialog {
+  color: #000000 !important;              /* Принудительно делаем текст черным */
+  background-color: var(--color-surface); /* Мягкий фон, который не сливается с окном */
+  border: 1px solid var(--color-muted);   /* Аккуратная серая рамка */
+}
+
+/* Эффект при наведении только на кнопку «Закрыть» */
+#close-order-dialog:hover {
+  background-color: var(--color-primary); /* При наведении фон меняется на ваш золотой */
+  color: var(--color-white) !important;   /* А текст становится контрастным белым */
+}
+
 .button:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
@@ -344,7 +382,7 @@ a:focus-visible {
   background-color: var(--color-success-bg);
 }
 
-/* Хлебные крошки по БЭМ (ПР №7) */
+
 .breadcrumbs {
   max-width: var(--container-width);
   margin: 0 auto var(--space-md);
@@ -365,4 +403,100 @@ html {
 :target {
   outline: 2px dashed var(--color-primary);
   outline-offset: 4px;
+}
+
+
+
+/* Блок таблицы характеристик по БЭМ */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-md);
+  background-color: var(--color-bg);
+}
+.product-table th,
+.product-table td {
+  border: 1px solid var(--color-border);
+  padding: var(--space-sm) var(--space-md);
+  text-align: center;
+}
+.product-table th {
+  background-color: var(--color-surface);
+  font-weight: 700;
+}
+.product-table td:first-child {
+  text-align: left;
+}
+
+
+
+
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+.scroll-top-btn:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+
+
+
+
+
+
+/* Контейнер для центрирования формы на странице */
+.feedback-container {
+  max-width: 560px; /* Точная ширина как у вашего модального окна */
+  margin: var(--space-lg) auto;
+  padding: var(--space-xl);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Мягкая тень */
+}
+
+/* Отступы для мелкого подсказывающего текста */
+.order-form__help-text {
+  display: block;
+  margin-top: var(--space-xs);
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+/* Выравнивание чекбокса с текстом согласия */
+.order-form__field--checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.order-form__checkbox-label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Стилизация кнопки */
+.order-form__actions .button {
+  width: auto;
+  padding: 12px var(--space-xl);
+  font-weight: 600;
 }
