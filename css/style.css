@@ -88,6 +88,7 @@ a:focus-visible {
   list-style: none;
 }
 
+
 .site-nav__list li {
   margin-bottom: var(--space-sm);
 }
@@ -99,10 +100,12 @@ a:focus-visible {
   border-radius: var(--radius-sm);
 }
 
+
 .site-nav__list a:hover {
   color: var(--color-white);
   background-color: var(--color-primary);
 }
+
 
 
 /* ===============================
@@ -122,6 +125,13 @@ a:focus-visible {
 .section h2 {
   margin-top: 0;
 }
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
 .product-card {
   display: flex;
   flex-direction: column;
@@ -137,6 +147,7 @@ a:focus-visible {
   margin-top: auto;
   align-self: flex-start;
 }
+
 
 .product-card:hover {
   border-color: var(--color-primary);
@@ -317,3 +328,4 @@ html {
   border-radius: var(--radius-sm);
   font: inherit;
 }
+
