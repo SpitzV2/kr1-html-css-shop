@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ферокактус шварции — CactusShop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="site-header__inner">
+        <a class="site-header__logo" href="index.html">CactusShop</a>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заказ</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="feedback.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="breadcrumbs">
+        <a class="breadcrumbs__link" href="index.html">Главная</a> /
+        <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+        <span class="breadcrumbs__current">Ферокактус шварции</span>
+    </div>
+
+    <section class="section">
+        <div class="product-detail" style="display: flex; gap: var(--space-xl); flex-wrap: wrap; margin-bottom: var(--space-xl);">
+            <div style="flex: 1; min-width: 300px; position: relative;" class="product-card">
+                <span class="product-card__badge" style="position: absolute; top: var(--space-sm); right: var(--space-sm); padding: 4px 8px; color: var(--color-white); background-color: var(--color-danger); border-radius: var(--radius-sm);">Хит</span>
+                <img src="images/ferocactus.jpg" alt="Ферокактус шварции в горшке" style="width: 100%; border-radius: var(--radius-md);">
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <h1>Ферокактус шварции</h1>
+                <p class="product-card__price" style="font-size: 24px; color: var(--color-border); margin-bottom: var(--space-md);">Цена: 381 руб.</p>
+                <p>Ферокактус Шварции (Ferocactus schwarzii) — это необычный комнатный кактус с плотным шаровидным стеблем, выраженными рёбрами и декоративными светлыми колючками. Прекрасно подходит для создания пустынных композиций на солнечных подоконниках.</p>
+                <button class="button button--primary product-card__button" type="button" data-product="Ферокактус шварции" style="padding: 12px var(--space-xl);">Заказать сейчас</button>
+            </div>
+        </div>
+
+        <h2>Сравнение характеристик сорта</h2>
+        <table class="product-table">
+            <caption>Характеристики суккулентов</caption>
+            <thead>
+            <tr>
+                <th>Характеристика</th>
+                <th>Ферокатус шварции</th>
+                <th>Хавортия маргаритифера</th>
+                <th>Эхеверия мун фейри</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><strong>Текстура поверхности</strong></td>
+                <td>Имеет выраженные ребра с острыми светлыми колючками.</td>
+                <td>Плотные листья с выпуклыми белыми жемчужными точками.</td>
+                <td>Полностью гладкие, нежные листья без колючек в розетке.</td>
+            </tr>
+            <tr>
+                <td><strong>Форма роста</strong></td>
+                <td>Шаровидная форма с четкой вертикальной геометрией.</td>
+                <td>Кустистая звездчатая форма с заостренными листьями.</td>
+                <td>Форма правильной геометрии «каменная роза».</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+    <p>Магазин комнатных растений и суккулентов CactusShop</p>
+</footer>
+
+<dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+    <form class="order-form" id="order-form" novalidate>
+        <input id="selected-product" name="selected-product" type="hidden">
+        <div class="order-form__field">
+            <label class="order-form__label" for="order-name">Имя</label>
+            <input class="order-form__input" id="order-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" required>
+        </div>
+        <div class="order-form__field">
+            <label class="order-form__label" for="order-email">E-mail</label>
+            <input class="order-form__input" id="order-email" name="email" type="email" placeholder="example@mail.ru" required>
+        </div>
+        <div class="order-form__field">
+            <label class="order-form__label" for="order-phone">Телефон</label>
+            <input class="order-form__input" id="order-phone" name="phone" type="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+        </div>
+        <div class="order-form__field">
+            <label>
+                <input id="order-agreement" name="agreement" type="checkbox" required> Я согласен на обработку данных
+            </label>
+        </div>
+        <div class="order-form__actions">
+            <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
+            <button class="button button--primary" type="submit">Отправить заявку</button>
+        </div>
+    </form>
+</dialog>
+<p class="success-message" id="success-message" hidden>Форма успешно отправлена!</p>
+
+</body>
+</html>

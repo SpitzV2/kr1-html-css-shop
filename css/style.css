@@ -3,16 +3,16 @@
    =============================== */
 :root {
   --color-bg: #ffffff;
-  --color-text: #000000;
+  --color-text: #232238;           /* Мягкий чернильно-синий вместо черного */
   --color-muted: #666666;
   --color-primary: #B8A26D;
   --color-primary-dark: #B89034;
   --color-border: #3D7854;
   --color-surface: #F2F1EB;
-  --color-surface-accent: #3D7854;
+  --color-surface-accent: #B8B4A0; /* Мягкий светло-серый тауп палитры */
   --color-danger: #631B1E;
   --color-success: #3D7854;
-  --color-success-bg: #3D7854;
+  --color-success-bg: #eefaf0;    /* Исправлено: нежный пастельный фон */
   --color-white: #ffffff;
   --color-shapka: #F0EBD5;
 
@@ -37,41 +37,35 @@
 }
 html {
   scroll-behavior: smooth;
-  height: 100%; /* Добавляем полную высоту для родительского элемента */
+  height: 100%;
 }
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.5;
   color: var(--color-text);
   background-color: var(--color-bg);
-
-  /* Включаем Flexbox на всю высоту экрана */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-header{
+header {
   background-color: var(--color-surface);
-  flex-grow: 0;   /* Запрещаем шапке растягиваться */
-  flex-shrink: 0; /* Запрещает шапке сжиматься */
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 main {
   flex-grow: 1;
   flex-shrink: 0;
-}
-
-footer {
-  background-color: var(--color-surface); /* Возвращаем мягкую плашку */
-  margin-top: auto; /* Дополнительная страховка для прижатия к низу */
+  padding: var(--space-lg);
 }
 footer {
   padding: var(--space-lg);
-  background-color: var(--color-surface); /* Возвращаем мягкую плашку */
-  flex-shrink: 0; /* Запрещаем футеру менять размеры */
-  margin-top: auto; /* Дополнительная страховка для прижатия к низу */
+  background-color: var(--color-surface);
+  flex-shrink: 0;
+  margin-top: auto;
 }
+
 /* ===============================
    3. Общие элементы интерфейса
    =============================== */
@@ -87,10 +81,9 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-/* Шапка и навигация сайта по БЭМ и Flexbox (ПР №6 и №7) */
 .site-header {
-  background-color: var(--color-shapka); /* Наш светло-серый тауп (#B8B4A0) */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);   /* Мягкая тень снизу для объема */
+  background-color: var(--color-shapka);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   width: 100%;
 }
 .site-header__inner {
@@ -134,10 +127,6 @@ a:focus-visible {
   color: var(--color-primary-dark);
   text-decoration: underline;
 }
-.site-nav__link:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
 .site-nav__link--active {
   color: var(--color-primary-dark);
   font-weight: 700;
@@ -157,19 +146,11 @@ a:focus-visible {
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
 }
-.section h2 {
-  margin-top: 0;
-}
-
-/* Сетка карточек товаров (CSS Grid из ПР №6) */
 .products-grid {
   display: grid;
-  /* Автоматически умещает карточки, делая максимум 2 в ряд */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-lg);
 }
-
-/* Карточка товара (Внутренний Flexbox из ПР №6 + БЭМ из ПР №7) */
 .product-card {
   display: flex;
   flex-direction: column;
@@ -179,19 +160,8 @@ a:focus-visible {
   border-radius: var(--radius-md);
   background-color: var(--color-bg);
 }
-.product-card:hover {
-  border-color: var(--color-primary);
-}
-.product-card--featured {
-  border-color: var(--color-primary);
-}
 .product-card__title {
   margin: 0;
-  color: var(--color-text);
-}
-.product-card__description {
-  margin: 0;
-  color: var(--color-muted);
 }
 .product-card__price {
   margin: 0;
@@ -202,7 +172,6 @@ a:focus-visible {
   align-self: flex-start;
 }
 
-/* Самостоятельный БЭМ-блок кнопки с модификаторами */
 .button {
   display: inline-block;
   padding: var(--space-sm) var(--space-md);
@@ -211,13 +180,14 @@ a:focus-visible {
   font: inherit;
   text-decoration: none;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .button--primary {
   color: var(--color-white);
-  background-color: var(--color-primary);
+  background-color: var(--color-success);
 }
 .button--primary:hover {
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-danger);
   color: var(--color-white) !important;
 }
 .button--secondary {
@@ -230,33 +200,16 @@ a:focus-visible {
   background-color: var(--color-primary);
 }
 
-/* Перекрашиваем только кнопку «Закрыть» по её уникальному ID */
 #close-order-dialog {
-  color: #000000 !important;              /* Принудительно делаем текст черным */
-  background-color: var(--color-surface); /* Мягкий фон, который не сливается с окном */
-  border: 1px solid var(--color-muted);   /* Аккуратная серая рамка */
-}
-
-/* Эффект при наведении только на кнопку «Закрыть» */
-#close-order-dialog:hover {
-  background-color: var(--color-primary); /* При наведении фон меняется на ваш золотой */
-  color: var(--color-white) !important;   /* А текст становится контрастным белым */
-}
-
-.button:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
-}
-
-.aside-info {
-  max-width: var(--container-width);
-  margin: 0 auto var(--space-xl);
-  padding: var(--space-md);
-  border-left: 4px solid var(--color-primary);
+  color: #000000 !important;
   background-color: var(--color-surface);
+  border: 1px solid var(--color-muted);
+}
+#close-order-dialog:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white) !important;
 }
 
-/* Двухколоночный макет каталога через области CSS Grid (ПР №6) */
 .catalog-layout {
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
@@ -276,12 +229,7 @@ a:focus-visible {
 .catalog-products {
   grid-area: products;
 }
-.catalog-filters__title,
-.catalog-products__title {
-  margin-top: 0;
-}
 
-/* Форма фильтров по БЭМ с сохранением вашей исходной структуры структуры */
 .filters-form {
   display: grid;
   gap: var(--space-md);
@@ -292,26 +240,11 @@ a:focus-visible {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
 }
-.filters-form__legend {
-  font-weight: 700;
-  padding: 0 var(--space-xs);
-}
-.filters-form__label {
-  display: block;
-  margin-bottom: var(--space-sm);
-  cursor: pointer;
-}
 .filters-form__input[type="number"] {
   width: 100%;
   padding: 8px 10px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  font: inherit;
-  margin-top: var(--space-xs);
-  margin-bottom: var(--space-sm);
-}
-.filters-form__button {
-  width: 100%;
 }
 
 /* ===============================
@@ -326,16 +259,8 @@ a:focus-visible {
 .order-dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
-.order-dialog__title {
-  margin-top: 0;
-}
-
 .order-form__field {
   margin-bottom: var(--space-md);
-}
-.order-form__label {
-  display: block;
-  margin-bottom: var(--space-xs);
 }
 .order-form__input,
 .order-form__select,
@@ -344,26 +269,6 @@ a:focus-visible {
   padding: 10px 12px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  font: inherit;
-}
-.order-form__input[type="checkbox"] {
-  width: auto;
-}
-.order-form__field small {
-  display: block;
-  margin-top: var(--space-xs);
-  color: var(--color-muted);
-}
-.order-form__input:hover,
-.order-form__select:hover,
-.order-form__textarea:hover {
-  border-color: var(--color-primary);
-}
-.order-form__input:focus-visible,
-.order-form__select:focus-visible,
-.order-form__textarea:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
 }
 .order-form__actions {
   display: flex;
@@ -380,8 +285,8 @@ a:focus-visible {
   padding: var(--space-md);
   border-left: 4px solid var(--color-success);
   background-color: var(--color-success-bg);
+  color: #232238;
 }
-
 
 .breadcrumbs {
   max-width: var(--container-width);
@@ -392,22 +297,7 @@ a:focus-visible {
 .breadcrumbs__link {
   color: var(--color-primary);
 }
-.breadcrumbs__current::before {
-  content: " / ";
-  color: var(--color-muted);
-}
 
-html {
-  scroll-behavior: smooth;
-}
-:target {
-  outline: 2px dashed var(--color-primary);
-  outline-offset: 4px;
-}
-
-
-
-/* Блок таблицы характеристик по БЭМ */
 .product-table {
   width: 100%;
   border-collapse: collapse;
@@ -422,15 +312,7 @@ html {
 }
 .product-table th {
   background-color: var(--color-surface);
-  font-weight: 700;
 }
-.product-table td:first-child {
-  text-align: left;
-}
-
-
-
-
 
 .scroll-top-btn {
   position: fixed;
@@ -444,59 +326,50 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
-  font-weight: 700;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 100;
 }
-.scroll-top-btn:hover {
-  background-color: var(--color-primary-dark);
-  color: var(--color-white);
-}
 
-
-
-
-
-
-
-/* Контейнер для центрирования формы на странице */
 .feedback-container {
-  max-width: 560px; /* Точная ширина как у вашего модального окна */
+  max-width: 560px;
   margin: var(--space-lg) auto;
   padding: var(--space-xl);
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Мягкая тень */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
-
-/* Отступы для мелкого подсказывающего текста */
-.order-form__help-text {
-  display: block;
-  margin-top: var(--space-xs);
-  color: var(--color-muted);
-  font-size: 13px;
-}
-
-/* Выравнивание чекбокса с текстом согласия */
 .order-form__field--checkbox {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  margin-top: var(--space-md);
 }
 
-.order-form__checkbox-label {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+
+/* 1. Делаем карточку родителем для абсолютных координат */
+.product-card {
+  position: relative; /* Обязательно! Чтобы бейдж не улетел за пределы карточки */
 }
 
-/* Стилизация кнопки */
-.order-form__actions .button {
-  width: auto;
-  padding: 12px var(--space-xl);
-  font-weight: 600;
+/* 2. Базовые стили для всех бейджей */
+.product-card__badge {
+  position: absolute;
+  top: 12px;           /* Отступ сверху от края карточки */
+  right: 12px;         /* Отступ справа от края карточки */
+  padding: 4px 10px;   /* Внутренние отступы, чтобы текст не сжимался */
+  font-size: 12px;     /* Делаем шрифт чуть меньше основного */
+  font-weight: bold;   /* Жирный текст */
+  color: var(--color-white); /* Белые буквы */
+  border-radius: var(--radius-sm); /* Округление углов */
+  z-index: 10;         /* Чтобы бейдж всегда был поверх картинки */
+}
+
+/* 3. Цвет для бейджа «Хит» (Синий, как на вашем примере) */
+.product-card__badge--hit {
+  background-color: #0057b8; /* Красивый насыщенный синий цвет */
+}
+
+/* 4. Цвет для бейджа «Новинка» (Зеленый, как на вашем примере) */
+.product-card__badge--new {
+  background-color: #198754; /* Приглушенный зеленый цвет */
 }
