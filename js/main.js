@@ -25,29 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
   if (orderForm && successMessage) {
     orderForm.addEventListener('submit', (event) => {
       event.preventDefault();
-
       const formElements = Array.from(orderForm.elements);
       formElements.forEach((element) => {
-        if (element.willValidate) {
-          element.removeAttribute('aria-invalid');
-        }
+        if (element.willValidate) element.removeAttribute('aria-invalid');
       });
-
       if (!orderForm.checkValidity()) {
         formElements.forEach((element) => {
-          if (element.willValidate && !element.checkValidity()) {
-            element.setAttribute('aria-invalid', 'true');
-          }
+          if (element.willValidate && !element.checkValidity()) element.setAttribute('aria-invalid', 'true');
         });
         orderForm.reportValidity();
         return;
       }
-
       successMessage.hidden = false;
       orderForm.reset();
-      if (orderDialog) {
-        orderDialog.close();
-      }
+      if (orderDialog) orderDialog.close();
     });
   }
 
@@ -57,27 +48,43 @@ document.addEventListener('DOMContentLoaded', () => {
   if (pageFeedbackForm && feedbackSuccessMessage) {
     pageFeedbackForm.addEventListener('submit', (event) => {
       event.preventDefault();
-
       const formElements = Array.from(pageFeedbackForm.elements);
       formElements.forEach((element) => {
-        if (element.willValidate) {
-          element.removeAttribute('aria-invalid');
-        }
+        if (element.willValidate) element.removeAttribute('aria-invalid');
       });
-
       if (!pageFeedbackForm.checkValidity()) {
         formElements.forEach((element) => {
-          if (element.willValidate && !element.checkValidity()) {
-            element.setAttribute('aria-invalid', 'true');
-          }
+          if (element.willValidate && !element.checkValidity()) element.setAttribute('aria-invalid', 'true');
         });
         pageFeedbackForm.reportValidity();
         return;
       }
-
       feedbackSuccessMessage.hidden = false;
       pageFeedbackForm.reset();
       feedbackSuccessMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
+  const pageOrderForm = document.getElementById('page-order-form');
+  const orderPageSuccessMessage = document.getElementById('order-page-success-message');
+
+  if (pageOrderForm && orderPageSuccessMessage) {
+    pageOrderForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formElements = Array.from(pageOrderForm.elements);
+      formElements.forEach((element) => {
+        if (element.willValidate) element.removeAttribute('aria-invalid');
+      });
+      if (!pageOrderForm.checkValidity()) {
+        formElements.forEach((element) => {
+          if (element.willValidate && !element.checkValidity()) element.setAttribute('aria-invalid', 'true');
+        });
+        pageOrderForm.reportValidity();
+        return;
+      }
+      orderPageSuccessMessage.hidden = false;
+      pageOrderForm.reset();
+      orderPageSuccessMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   }
 

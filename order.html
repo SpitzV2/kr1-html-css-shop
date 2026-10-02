@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформить заказ — CactusShop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="site-header__inner">
+        <a class="site-header__logo" href="index.html">CactusShop</a>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+                <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="order.html">Заказ</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="feedback.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="breadcrumbs">
+        <a class="breadcrumbs__link" href="index.html">Главная</a>
+        <span class="breadcrumbs__current">Оформление заказа</span>
+    </div>
+
+    <section class="section">
+        <h1>Оформление заказа</h1>
+        <p>Заполните форму ниже, чтобы забронировать выбранные суккуленты. Наш менеджер свяжется с вами для подтверждения доставки.</p>
+
+        <div class="feedback-container">
+            <form class="order-form" id="page-order-form" novalidate>
+                <div class="order-form__field">
+                    <label class="order-form__label" for="order-page-name">Имя</label>
+                    <input class="order-form__input" id="order-page-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" required>
+                </div>
+                <div class="order-form__field">
+                    <label class="order-form__label" for="order-page-email">E-mail</label>
+                    <input class="order-form__input" id="order-page-email" name="email" type="email" placeholder="example@mail.ru" required>
+                </div>
+                <div class="order-form__field">
+                    <label class="order-form__label" for="order-page-phone">Телефон</label>
+                    <input class="order-form__input" id="order-page-phone" name="phone" type="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+                </div>
+                <div class="order-form__field order-form__field--checkbox">
+                    <label class="order-form__checkbox-label">
+                        <input class="order-form__checkbox" id="order-page-agreement" name="agreement" type="checkbox" required> Я согласен на обработку данных
+                    </label>
+                </div>
+                <div class="order-form__actions">
+                    <button class="button button--primary" type="submit">Подтвердить заказ</button>
+                </div>
+            </form>
+            <p class="success-message" id="order-page-success-message" hidden>Ваш заказ успешно принят! Спасибо за покупку.</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+    <p>Магазин комнатных растений и суккулентов CactusShop</p>
+</footer>
+
+</body>
+</html>
