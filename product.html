@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ферокактус шварции — CactusShop</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer></script>
 </head>
 <body>
 
 <header class="site-header">
     <div class="site-header__inner">
-        <a class="site-header__logo" href="index.html">CactusShop</a>
+        <a class="site-header__logo" href="index.html">СactusShop</a>
         <nav class="site-nav" aria-label="Основная навигация">
             <ul class="site-nav__list">
                 <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
-                <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заказ</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+                <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
                 <li class="site-nav__item"><a class="site-nav__link" href="feedback.html">Обратная связь</a></li>
             </ul>
         </nav>
@@ -27,86 +27,77 @@
 <main>
     <div class="breadcrumbs">
         <a class="breadcrumbs__link" href="index.html">Главная</a> /
-        <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+        <a class="breadcrumbs__link" href="catalog.html">Каталог</a> /
         <span class="breadcrumbs__current">Ферокактус шварции</span>
     </div>
 
     <section class="section">
-        <div class="product-detail" style="display: flex; gap: var(--space-xl); flex-wrap: wrap; margin-bottom: var(--space-xl);">
-            <div style="flex: 1; min-width: 300px; position: relative;" class="product-card">
-                <span class="product-card__badge" style="position: absolute; top: var(--space-sm); right: var(--space-sm); padding: 4px 8px; color: var(--color-white); background-color: var(--color-danger); border-radius: var(--radius-sm);">Хит</span>
-                <img src="images/ferocactus.jpg" alt="Ферокактус шварции в горшке" style="width: 100%; border-radius: var(--radius-md);">
+        <div class="product-page-layout">
+            <div class="product-page-image" style="position: relative;">
+                <span class="product-card__badge product-card__badge--hit">Хит</span>
+                <img src="images/ferocactus.jpg" alt="Ферокактус шварции в горшке" width="100%" style="border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
             </div>
-            <div style="flex: 1; min-width: 300px;">
+            <div class="product-page-info">
                 <h1>Ферокактус шварции</h1>
-                <p class="product-card__price" style="font-size: 24px; color: var(--color-border); margin-bottom: var(--space-md);">Цена: 381 руб.</p>
+                <p class="product-card__price" style="font-size: 24px;">Цена: 381 руб.</p>
                 <p>Ферокактус Шварции (Ferocactus schwarzii) — это необычный комнатный кактус с плотным шаровидным стеблем, выраженными рёбрами и декоративными светлыми колючками. Прекрасно подходит для создания пустынных композиций на солнечных подоконниках.</p>
-                <button class="button button--primary product-card__button" type="button" data-product="Ферокактус шварции" style="padding: 12px var(--space-xl);">Заказать сейчас</button>
+                <a class="button button--primary" href="order.html" style="align-self: flex-start;">Перейти к оформлению</a>
             </div>
         </div>
 
-        <h2>Сравнение характеристик сорта</h2>
-        <table class="product-table">
-            <caption>Характеристики суккулентов</caption>
-            <thead>
-            <tr>
-                <th>Характеристика</th>
-                <th>Ферокатус шварции</th>
-                <th>Хавортия маргаритифера</th>
-                <th>Эхеверия мун фейри</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><strong>Текстура поверхности</strong></td>
-                <td>Имеет выраженные ребра с острыми светлыми колючками.</td>
-                <td>Плотные листья с выпуклыми белыми жемчужными точками.</td>
-                <td>Полностью гладкие, нежные листья без колючек в розетке.</td>
-            </tr>
-            <tr>
-                <td><strong>Форма роста</strong></td>
-                <td>Шаровидная форма с четкой вертикальной геометрией.</td>
-                <td>Кустистая звездчатая форма с заостренными листьями.</td>
-                <td>Форма правильной геометрии «каменная роза».</td>
-            </tr>
-            </tbody>
-        </table>
+        <h2>Сравнение характеристик всего каталога</h2>
+        <div class="table-responsive">
+            <table class="product-table">
+                <thead>
+                <tr>
+                    <th>Характеристика</th>
+                    <th>Ферокатус шварции</th>
+                    <th>Хавортия маргаритифера</th>
+                    <th>Эхеверия мун фейри</th>
+                    <th>Кактус Микс (Cactus Mix)</th>
+                    <th>Эхинокактус грузони</th>
+                    <th>Крассула овата минор</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong>Тип защитных элементов / Текстура поверхности</strong></td>
+                    <td>Имеет выраженные ребра с острыми декоративными светлыми колючками.</td>
+                    <td>Без колючек, но с плотными листьями, покрытыми выпуклыми белыми точками, напоминающими жемчужины.</td>
+                    <td>Полностью гладкие, нежные листья без колючек и наростов, собранные в аккуратную розетку.</td>
+                    <td>Разнообразная: могут встречаться как колючие экземпляры, так и другие текстуры в зависимости от состава набора.</td>
+                    <td>Поверхность с выраженными рёбрами, покрытая плотными золотистыми колючками.</td>
+                    <td>Гладкие, плотные, мелкие и аккуратные мясистые листья без колючек.</td>
+                </tr>
+                <tr>
+                    <td><strong>Форма роста и силуэт</strong></td>
+                    <td>Шаровидная (круглая) форма с четкой вертикальной геометрией за счет ребер.</td>
+                    <td>Кустистая / звездчатая форма с заостренными листьями, растущими вверх и в стороны.</td>
+                    <td>Форма правильной геометрии («каменная роза») с плоской и компактной прикорневой розеткой.</td>
+                    <td>Сборный силуэт: сочетает шаровидные, вытянутые колонновидные и миниатюрные редкие формы в одной композиции.</td>
+                    <td>Округлая, куполообразная форма («кактус золотой шар» или круглый кактус).</td>
+                    <td>Миниатюрное деревце с компактной кроной, отлично подходит для создания бонсай.</td>
+                </tr>
+                <tr>
+                    <td><strong>Ценовая категория</strong></td>
+                    <td>Бюджетный вариант (381 руб.) — самый доступный товар в представленной тройке.</td>
+                    <td>Средний ценовой сегмент (499 руб.) — сбалансированная стоимость за редкий суккулент.</td>
+                    <td>Премиум-вариант (659 руб.) — самое дорогое растение из трех, позиционируемое как декоративный суккулент с нежным окрасом.</td>
+                    <td>Средне-высокий сегмент (2679 руб.) за готовую разнообразную композицию.</td>
+                    <td>Премиум-сегмент (4789 руб.) — самое дорогое растение в каталоге, крупный декоративный экземпляр.</td>
+                    <td>Доступный сегмент (899 руб.) за изящное сортовое «денежное дерево».</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 </main>
 
 <footer>
     <p>&copy; 2026 Учебный проект. Все права защищены.</p>
-    <p>Магазин комнатных растений и суккулентов CactusShop</p>
+    <p>Магазин комнатных растений и суккулентов</p>
 </footer>
 
-<dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
-    <form class="order-form" id="order-form" novalidate>
-        <input id="selected-product" name="selected-product" type="hidden">
-        <div class="order-form__field">
-            <label class="order-form__label" for="order-name">Имя</label>
-            <input class="order-form__input" id="order-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" required>
-        </div>
-        <div class="order-form__field">
-            <label class="order-form__label" for="order-email">E-mail</label>
-            <input class="order-form__input" id="order-email" name="email" type="email" placeholder="example@mail.ru" required>
-        </div>
-        <div class="order-form__field">
-            <label class="order-form__label" for="order-phone">Телефон</label>
-            <input class="order-form__input" id="order-phone" name="phone" type="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
-        </div>
-        <div class="order-form__field">
-            <label>
-                <input id="order-agreement" name="agreement" type="checkbox" required> Я согласен на обработку данных
-            </label>
-        </div>
-        <div class="order-form__actions">
-            <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
-            <button class="button button--primary" type="submit">Отправить заявку</button>
-        </div>
-    </form>
-</dialog>
-<p class="success-message" id="success-message" hidden>Форма успешно отправлена!</p>
-
+<a class="scroll-top-btn" href="#">↑</a>
 </body>
 </html>
