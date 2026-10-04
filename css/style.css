@@ -55,15 +55,15 @@ header {
   flex-shrink: 0;
 }
 main {
-  flex-grow: 1;
+  flex-grow: 1; /*расягиваться*/
   flex-shrink: 0;
   padding: var(--space-lg);
 }
 footer {
   padding: var(--space-lg);
   background-color: var(--color-surface);
-  flex-shrink: 0;
-  margin-top: auto;
+  flex-shrink: 0; /*разрешает урезать*/
+  margin-top: auto;/*• максимально сильно оттолкнуть footer в самый низ экрана.*/
 }
 
 /* ===============================
@@ -71,35 +71,41 @@ footer {
    =============================== */
 a {
   color: var(--color-primary);
-  text-decoration: none;
+  text-decoration: none; /*убирает стандартное браузерное подчёркивание у текста ссылок,*/
 }
 a:hover {
-  color: var(--color-primary-dark);
+  color: var(--color-primary-dark);/*срабатывает, когда пользователь наводит курсор мыши на ссылку */
 }
 a:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
+  outline: 2px solid var(--color-primary);/* создаёт чёткую сплошную рамку вокруг ссылки, на которую сфокусирован пользователь*/
+  outline-offset: 3px; /*тодвигает эту рамку наружу на 3 пикселя от текста,*/
 }
 
 .site-header {
   background-color: var(--color-shapka);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   width: 100%;
+  /*
+  • box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); — добавляет под шапкой мягкую, едва заметную тень
+	• 0 — тень не смещена по горизонтали
+	• 2px — тень падает ровно на 2 пикселя вниз
+	• 10px — размытие тени делает её плавной
+  */
 }
 .site-header__inner {
   max-width: var(--container-width);
-  margin: 0 auto;
+  margin: 0 auto;/*• auto заставляет браузер автоматически рассчитать одинаковые отступы справа и слева, выравнивая блок строго по центру экрана.*/
   padding: var(--space-lg) var(--space-md);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-between; /*• магия выравнивания. Она расталкивает элементы по краям контейнера: логотип улетает максимально влево, а меню навигации — максимально вправо.*/
+  align-items: center; /* выравнивает логотип и ссылки по вертикали точно по центру друг относительно друга, */
   gap: var(--space-md);
 }
 .site-header__logo {
   font-weight: 700;
   color: var(--color-text);
-  text-decoration: none;
+  text-decoration: none; /*убирает нижнее подчеркивание, свойственное ссылкам по умолчанию.*/
   font-size: 18px;
 }
 .site-nav__list {
@@ -110,13 +116,15 @@ a:focus-visible {
   gap: var(--space-md);
   padding: 0;
   margin: 0;
-  list-style: none;
+  list-style: none;/*стирает встроенные браузерные точки-маркеры списка.
+*/
 }
 .site-nav__item {
   margin-bottom: 0;
 }
 .site-nav__link {
   display: inline-block;
+  /*•  превращает строчную ссылку в строчно-блочную MDN Web Docs. Это необходимо для того, чтобы у ссылки начали правильно работать внутренние отступы (padding) со всех четырех сторон MDN Web Docs.*/
   padding: var(--space-xs) var(--space-sm);
   color: var(--color-primary);
   text-decoration: none;
@@ -126,6 +134,7 @@ a:focus-visible {
 .site-nav__link:hover {
   color: var(--color-primary-dark);
   text-decoration: underline;
+  /*срабатывает в момент, когда пользователь наводит мышку на пункт меню MDN Web Docs. Цвет текста мгновенно становится более темным и насыщенным, а под словом появляется аккуратная линия подчёркивания.*/
 }
 .site-nav__link--active {
   color: var(--color-primary-dark);
@@ -147,8 +156,8 @@ a:focus-visible {
   margin: 0 auto var(--space-xl);
 }
 .products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: grid; /*теперь этот блок становится главным диспетчером, который будет строго управлять расположением всех карточек товаров (<article>) внутри себя.*/
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));/* Браузер сам считает ширину экрана и пытается уместить в один ряд как можно больше колонок. */
   gap: var(--space-lg);
 }
 .product-card {
@@ -168,19 +177,23 @@ a:focus-visible {
   font-weight: 700;
 }
 .product-card__button {
-  margin-top: auto;
-  align-self: flex-start;
+  margin-top: auto;/*это знаменитый Flexbox-трюк для вертикального выравнивания*/
+  align-self: flex-start;/*управляет выравниванием кнопки по горизонтали*/
 }
 
 .button {
-  display: inline-block;
+  display: inline-block;/*превращает элемент в строчно-блочный*/
   padding: var(--space-sm) var(--space-md);
-  border: none;
+  border: none; /*полностью удаляет стандартную, часто некрасивую серую рамку, которую браузеры по умолчанию рисуют вокруг тегов */
   border-radius: var(--radius-sm);
-  font: inherit;
+  font: inherit;/*приказывает кнопке унаследовать шрифт от родительского элемента (в вашем случае — шрифт Arial из настроек body)*/
   text-decoration: none;
-  cursor: pointer;
+  cursor: pointer;/*меняет стандартную стрелочку курсора мыши на иконку «указательного пальца» при наведении на кнопк*/
   transition: background-color 0.3s ease, color 0.3s ease;
+  /*
+  Когда пользователь наведёт мышку на кнопку и у неё изменятся цвет фона (background-color)
+   или цвет текста (color), сделай этот переход не резким, а растяни его на 0.3 секунды с мягким эффектом (ease)
+  */
 }
 .button--primary {
   color: var(--color-white);
@@ -188,7 +201,7 @@ a:focus-visible {
 }
 .button--primary:hover {
   background-color: var(--color-danger);
-  color: var(--color-white) !important;
+  color: var(--color-white) !important;/*гарантирует, что текст на кнопке при наведении станет абсолютно белым (#ffffff), */
 }
 .button--secondary {
   color: var(--color-primary);
@@ -214,10 +227,12 @@ a:focus-visible {
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
   display: grid;
-  grid-template-columns: 260px 1fr;
-  grid-template-areas: "filters products";
+  grid-template-columns: 260px 1fr;/*• жестко задает размеры колонок. Первая колонка (для фильтров)
+  всегда будет иметь фиксированную ширину 260px, а вторая (для товаров) заберет себе всё оставшееся
+   свободное пространство экрана (1fr).*/
+  grid-template-areas: "filters products";/* Мы даем первой колонке текстовое имя "filters", а второй — "products".*/
   gap: var(--space-lg);
-  align-items: start;
+  align-items: start;/*Оно прижимает блоки к верхнему краю.*/
 }
 .catalog-filters {
   grid-area: filters;
@@ -278,6 +293,12 @@ a:focus-visible {
 
 [aria-invalid="true"] {
   border-color: var(--color-danger);
+  /*• это селектор атрибута в CSS MDN Web Docs. Он ищет на странице любые теги (например, <input> или <textarea>),
+   у которых в данный момент добавлен специальный атрибут aria-invalid="true".
+• border-color: var(--color-danger); — как только браузер находит такое поле,
+ он мгновенно перекрашивает его рамку в ваш фирменный бордово-красный цвет опасности (--color-danger),
+  сообщая пользователю: «Внимание, здесь допущена ошибка!».
+*/
 }
 .success-message {
   max-width: var(--container-width);
@@ -337,7 +358,7 @@ a:focus-visible {
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);/*которое используется для добавления тени вокруг элемента */
 }
 .order-form__field--checkbox {
   display: flex;
@@ -372,4 +393,33 @@ a:focus-visible {
 /* 4. Цвет для бейджа «Новинка» (Зеленый, как на вашем примере) */
 .product-card__badge--new {
   background-color: #198754; /* Приглушенный зеленый цвет */
+}
+/* ===============================
+   6. Дополнительные стили для страниц КР1
+   =============================== */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  /*• Браузер автоматически добавит этой таблице аккуратную полосу горизонтальной прокрутки MDN Web Docs.
+   Пользователь сможет двигать её пальцем вправо и влево внутри выделенного блока, а сам сайт останется ровным.
+*/
+  -webkit-overflow-scrolling: touch;/*• Значение touch делает прокрутку плавной, естественной и приятной,
+  как при обычном скролле ленты соцсетей — таблица будет изящно докручиваться по инерции.
+*/
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.product-page-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.product-page-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  justify-content: center;/* выравниванием элементов по горизонтали (вдоль главной оси) внутри контейнера*/
 }
