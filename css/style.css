@@ -160,7 +160,10 @@ a:focus-visible {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));/* Браузер сам считает ширину экрана и пытается уместить в один ряд как можно больше колонок. */
   gap: var(--space-lg);
 }
+
+/* 1. Делаем карточку родителем для абсолютных координат */
 .product-card {
+  position: relative; /* Обязательно! Чтобы бейдж не улетел за пределы карточки */
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
@@ -213,12 +216,21 @@ a:focus-visible {
   background-color: var(--color-primary);
 }
 
-#close-order-dialog {
+/* Обязательное состояние disabled из методических указаний Загородних Н. А. */
+button:disabled,
+.button--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ИСПРАВЛЕНО БЭМ: Оформление кнопки закрытия через класс (вместо запрещенного #id) */
+.order-dialog__close-btn {
   color: #000000 !important;
   background-color: var(--color-surface);
   border: 1px solid var(--color-muted);
 }
-#close-order-dialog:hover {
+.order-dialog__close-btn:hover {
   background-color: var(--color-primary);
   color: var(--color-white) !important;
 }
@@ -232,7 +244,7 @@ a:focus-visible {
    свободное пространство экрана (1fr).*/
   grid-template-areas: "filters products";/* Мы даем первой колонке текстовое имя "filters", а второй — "products".*/
   gap: var(--space-lg);
-  align-items: start;/*Оно прижимает блоки к верхнему краю.*/
+  align-items: start;/*Оно прижимает blocks к верхнему краю.*/
 }
 .catalog-filters {
   grid-area: filters;
@@ -240,6 +252,9 @@ a:focus-visible {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background-color: var(--color-surface);
+  /* Самостоятельная доработка: Липкая фиксация боковой панели при прокрутке */
+  position: sticky;
+  top: var(--space-md);
 }
 .catalog-products {
   grid-area: products;
@@ -293,11 +308,11 @@ a:focus-visible {
 
 [aria-invalid="true"] {
   border-color: var(--color-danger);
-  /*• это селектор атрибута в CSS MDN Web Docs. Он ищет на странице любые теги (например, <input> или <textarea>),
-   у которых в данный момент добавлен специальный атрибут aria-invalid="true".
+/*• это селектор атрибута в CSS MDN Web Docs. Он ищет на странице любые теги (например, <input> или <textarea>),
+ у которых в данный момент добавлен специальный атрибут aria-invalid="true".
 • border-color: var(--color-danger); — как только браузер находит такое поле,
- он мгновенно перекрашивает его рамку в ваш фирменный бордово-красный цвет опасности (--color-danger),
-  сообщая пользователю: «Внимание, здесь допущена ошибка!».
+он мгновенно перекрашивает его рамку в ваш фирменный бордово-красный цвет опасности (--color-danger),
+сообщая пользователю: «Внимание, здесь допущена ошибка!».
 */
 }
 .success-message {
@@ -308,7 +323,6 @@ a:focus-visible {
   background-color: var(--color-success-bg);
   color: #232238;
 }
-
 .breadcrumbs {
   max-width: var(--container-width);
   margin: 0 auto var(--space-md);
@@ -318,12 +332,19 @@ a:focus-visible {
 .breadcrumbs__link {
   color: var(--color-primary);
 }
-
 .product-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: var(--space-md);
   background-color: var(--color-bg);
+}
+/* Исправлено: Стили для обязательного семантического тега caption таблицы */
+.product-table caption {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: var(--space-sm);
+  text-align: left;
+  color: var(--color-text);
 }
 .product-table th,
 .product-table td {
@@ -334,7 +355,6 @@ a:focus-visible {
 .product-table th {
   background-color: var(--color-surface);
 }
-
 .scroll-top-btn {
   position: fixed;
   bottom: var(--space-lg);
@@ -350,7 +370,6 @@ a:focus-visible {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 100;
 }
-
 .feedback-container {
   max-width: 560px;
   margin: var(--space-lg) auto;
@@ -365,13 +384,6 @@ a:focus-visible {
   align-items: center;
   gap: var(--space-sm);
 }
-
-
-/* 1. Делаем карточку родителем для абсолютных координат */
-.product-card {
-  position: relative; /* Обязательно! Чтобы бейдж не улетел за пределы карточки */
-}
-
 /* 2. Базовые стили для всех бейджей */
 .product-card__badge {
   position: absolute;
@@ -394,18 +406,18 @@ a:focus-visible {
 .product-card__badge--new {
   background-color: #198754; /* Приглушенный зеленый цвет */
 }
+
 /* ===============================
    6. Дополнительные стили для страниц КР1
    =============================== */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
-  /*• Браузер автоматически добавит этой таблице аккуратную полосу горизонтальной прокрутки MDN Web Docs.
-   Пользователь сможет двигать её пальцем вправо и влево внутри выделенного блока, а сам сайт останется ровным.
-*/
-  -webkit-overflow-scrolling: touch;/*• Значение touch делает прокрутку плавной, естественной и приятной,
-  как при обычном скролле ленты соцсетей — таблица будет изящно докручиваться по инерции.
-*/
+  /* • Браузер автоматически добавит этой таблице аккуратную полосу горизонтальной прокрутки MDN Web Docs.
+     Пользователь сможет двигать её пальцем вправо и влево внутри выделенного блока, а сам сайт останется ровным. */
+  -webkit-overflow-scrolling: touch;
+  /* • Значение touch делает прокрутку плавной, естественной и приятной,
+     как при обычном скролле ленты соцсетей — таблица будет изящно докручиваться по инерции. */
   margin-top: var(--space-md);
   margin-bottom: var(--space-xl);
 }
@@ -421,5 +433,5 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  justify-content: center;/* выравниванием элементов по горизонтали (вдоль главной оси) внутри контейнера*/
+  justify-content: center; /* выравниванием элементов по горизонтали (вдоль главной оси) внутри контейнера */
 }
